@@ -7,7 +7,8 @@ RUN apt-get update \
        systemd systemd-cron \
     && rm -Rf /var/lib/apt/lists/* \
     && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
-    && apt-get clean
+    && apt-get clean \
+    && cp /bin/true /sbin/agetty
 
 COPY files/initctl_faker .
 RUN chmod +x initctl_faker && rm -fr /sbin/initctl && ln -s /initctl_faker /sbin/initctl
